@@ -16,8 +16,9 @@ buildscript {
 }
 
 plugins {
-    id 'io.gitlab.arturbosch.detekt' version '1.0.0.RC6-4' apply false
-    id 'com.github.ben-manes.versions' version '0.17.0'
+    id 'com.github.ben-manes.versions' version '0.20.0'
+    id 'io.gitlab.arturbosch.detekt' version '1.0.0.RC8'
+    id 'org.jlleitschuh.gradle.ktlint' version '5.0.0'
 }
 
 def teamPropsFile(propsFile) {
@@ -32,26 +33,21 @@ subprojects {
     buildscript {
         repositories {
             google()
-            jcenter()
             maven { url 'https://maven.fabric.io/public' }
             maven { url 'http://dl.bintray.com/arturbosch/code-analysis' }
+            jcenter()
         }
     }
 
     repositories {
         google()
-        jcenter()
-        maven { url 'https://jitpack.io' }
         maven { url 'https://maven.fabric.io/public' }
         mavenCentral()
+        jcenter()
+        maven { url 'https://jitpack.io' }
     }
 
     apply plugin: 'com.github.ben-manes.versions'
-    apply plugin: 'io.gitlab.arturbosch.detekt'
-
-    if (project.name != 'renderthread') {
-        apply from: teamPropsFile('static-analysis.gradle')
-    }
 }
 
-apply from: teamPropsFile('android-code-quality.gradle')
+apply from: teamPropsFile('setup-root-tasks.gradle')
