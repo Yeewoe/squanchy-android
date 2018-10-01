@@ -11,23 +11,17 @@ staticAnalysis {
         includeVariants { variant -> variant.name == 'release' }
         ignoreTestSources true // See https://groups.google.com/forum/#!topic/lint-dev/RGTvK_uHQGQ
     }
+}
 
-    ktlint {
-        android true
-        version ktlintVersion
-        reporters = ["PLAIN_GROUP_BY_FILE", "CHECKSTYLE"]
-        includeVariants { variant -> variant.name == 'release' }
-    }
+ktlint {
+    android = true
+    version = ktlintVersion
+}
 
-    detekt {
-        version detektVersion
+detekt {
+    toolVersion = detektVersion
 
-        defaultProfile {
-            input = "$projectDir/src/"
-            config = teamPropsFile('static-analysis/detekt-config.yml')
-            filters = '.*/test/.*,.*/resources/.*,.*/tmp/.*,.*/build/.*,.*/debug/.*'
-            output = "$projectDir/build/reports/detekt"
-            parallel = true
-        }
-    }
+    input = files("$projectDir/src")
+    config = files(teamPropsFile('static-analysis/detekt-config.yml'))
+    filters = '.*/test/.*,.*/resources/.*,.*/tmp/.*,.*/build/.*,.*/debug/.*'
 }
