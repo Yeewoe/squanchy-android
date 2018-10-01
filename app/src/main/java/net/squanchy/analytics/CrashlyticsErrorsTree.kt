@@ -11,13 +11,13 @@ class CrashlyticsErrorsTree : Timber.Tree() {
     override fun isLoggable(tag: String?, priority: Int) = true
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-        if (t != null && CAN_LOG) {
+        if (t != null && canLog) {
             Crashlytics.logException(t)
         }
     }
 
     companion object {
 
-        private val CAN_LOG = !BuildConfig.DEBUG
+        private val canLog = !BuildConfig.DEBUG
     }
 }

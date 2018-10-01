@@ -134,6 +134,7 @@ class EventDetailsActivity : AppCompatActivity() {
 
     companion object {
 
+        @Suppress("ObjectPropertyNaming") // It is a de-facto constant but we can't use const
         private val EXTRA_EVENT_ID = "${EventDetailsActivity::class.java.name}.event_id"
         private const val REQUEST_CODE_SIGNIN = 1235
 

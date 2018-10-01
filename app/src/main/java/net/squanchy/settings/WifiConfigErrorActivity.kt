@@ -40,8 +40,12 @@ class WifiConfigErrorActivity : AppCompatActivity() {
 
     companion object {
 
+        @Suppress("ObjectPropertyNaming") // It is a de-facto constant but we can't use const
         private val EXTRA_WIFI_SSID = "${WifiConfigErrorActivity::class.java.name}.wifi_ssid"
+
+        @Suppress("ObjectPropertyNaming") // It is a de-facto constant but we can't use const
         private val EXTRA_WIFI_PASSWORD = "${WifiConfigErrorActivity::class.java.name}.wifi_password"
+
         private const val COPIED_PASSWORD_LABEL = "password"
 
         fun createIntent(context: Context, wifiConfiguration: WifiConfiguration) =

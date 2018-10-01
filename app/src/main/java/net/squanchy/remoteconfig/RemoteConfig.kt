@@ -50,7 +50,10 @@ class RemoteConfig(
 
     companion object {
 
+        @Suppress("ObjectPropertyNaming") // It is a de-facto constant but we can't use const
         private val EXPIRY_IMMEDIATELY = TimeUnit.HOURS.toSeconds(0)
+
+        @Suppress("ObjectPropertyNaming") // It is a de-facto constant but we can't use const
         private val EXPIRY_ONE_HOUR = TimeUnit.HOURS.toSeconds(1)
     }
 }

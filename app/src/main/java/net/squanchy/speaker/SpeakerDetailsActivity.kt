@@ -126,6 +126,7 @@ class SpeakerDetailsActivity : AppCompatActivity() {
 
     companion object {
 
+        @Suppress("ObjectPropertyNaming") // It is a de-facto constant but we can't use const
         private val EXTRA_SPEAKER_ID = "${SpeakerDetailsActivity::class.java.name}.speaker_id"
 
         fun createIntent(context: Context, speakerId: String) =
